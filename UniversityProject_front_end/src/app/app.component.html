@@ -1,0 +1,20 @@
+<div class="header-panel">
+  <h1>
+    {{title}}
+  </h1>
+</div>
+<div class="working-panel">
+  <div class="navigation-panel">
+    <ul>
+      <br>
+      <li><a (click)="switchToStudents()">Students</a></li>
+      <li><a (click)="switchToTeachers()">Teachers</a></li>
+      <li><a (click)="switchToClubs()">Dictionary clubs</a></li>
+      <li><a (click)="switchToSubjects()">Dictionary subjects</a></li>
+      <li><a (click)="switchToPositions()">Dictionary positions</a></li>
+    </ul>
+  </div>
+  <div class="elements-panel">
+    <router-outlet></router-outlet>
+  </div>
+</div>

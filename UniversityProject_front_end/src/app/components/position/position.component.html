@@ -1,0 +1,24 @@
+<h2>
+  {{title}}
+</h2>
+
+<position-list
+  [positionItems]="positionItems"
+  [multiSelectionMode]="false"
+  (notifyOnSelect)="onNotify($event)">
+</position-list>
+<p> - click on item to select/de-select it</p>
+
+<input #newPositionInput type="text" placeholder="new position">
+<button (click)="addPosition(newPositionInput.value); newPositionInput.value = ''">add</button>
+<br><br>
+<input #editPositionInput type="text"
+       [disabled]="selectedIndexes.length != 1"
+       [value]="(selectedIndexes.length != 0) ? positionItems[selectedIndexes[0]].position.positionName: ''">
+<button (click)="editPositionByIndex(selectedIndexes[0], editPositionInput.value)"
+        [disabled]="selectedIndexes.length != 1">edit
+</button>
+
+<button (click)="deletePositionByIndex(selectedIndexes[0])"
+        [disabled]="selectedIndexes.length != 1">delete
+</button>

@@ -1,0 +1,43 @@
+<head>
+  <link href="https://unpkg.com/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+</head>
+
+<label>Last name:</label>
+<input #studentNewLastNameInput type=" text"
+       [value]="(student ==null)? '' : student.personLastName">
+
+<br>
+<label>First name:</label>
+<input #studentNewFirstNameInput [value]="(student ==null)? '' : student.personFirstName" type="text">
+
+<br>
+<label>Birthday:</label>
+
+<input #studentNewBirthdayInput [mdDatepicker]="picker" placeholder="Choose a date"
+       [value]="(student ==null)? '' : student.personBirthday | date:'yyyy-MM-dd'"
+>
+<md-datepicker #picker></md-datepicker>
+<button mdSuffix [mdDatepickerToggle]="picker"></button>
+
+<br>
+<br>
+<label>Subjects:</label>
+<subject-list
+  [subjectItems]="subjectItems"
+  [multiSelectionMode]="true">
+</subject-list>
+
+<br>
+<label>Clubs:</label>
+<club-list
+  [clubItems]="clubItems"
+  [multiSelectionMode]="true">
+</club-list>
+
+<br>
+<button
+  (click)="submit(studentNewLastNameInput.value, studentNewFirstNameInput.value, studentNewBirthdayInput.value)">
+  Submit
+</button>
+<button (click)="goToStudentList()">Back</button>
+

@@ -1,0 +1,24 @@
+<h2>
+  {{title}}
+</h2>
+
+<club-list
+  [clubItems]="clubItems"
+  [multiSelectionMode]="false"
+  (notifyOnSelect)="onNotify($event)">
+</club-list>
+<p> - click on item to select/de-select it</p>
+
+<input #newClubInput type="text" placeholder="new club">
+<button (click)="addClub(newClubInput.value); newClubInput.value = ''">add</button>
+<br><br>
+<input #editClubInput type="text"
+       [disabled]="selectedIndexes.length != 1"
+       [value]="(selectedIndexes.length != 0) ? clubItems[selectedIndexes[0]].club.clubName: ''">
+<button (click)="editClubByIndex(selectedIndexes[0], editClubInput.value)"
+        [disabled]="selectedIndexes.length != 1">edit
+</button>
+
+<button (click)="deleteClubByIndex(selectedIndexes[0])"
+        [disabled]="selectedIndexes.length != 1">delete
+</button>

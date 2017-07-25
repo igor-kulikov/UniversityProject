@@ -1,0 +1,22 @@
+<h2>
+  {{title}}
+</h2>
+
+<ul>
+  <li *ngFor="let teacher of teachers; let i = index"
+      (click)="selectItem(i)"
+      [class.selected]="i == selectedItemIndex">
+    {{teacher.personId}}. {{teacher.personLastName}} {{teacher.personFirstName}} ({{teacher.personBirthday |
+    date:'yyyy-MM-dd'}})
+    Position: {{(teacher.position != null)? teacher.position.positionName: '(not specified)'}}
+    Subject: {{(teacher.subject != null)? teacher.subject.subjectName: '(not specified)'}}
+  </li>
+</ul>
+
+<p> - click on item to select/de-select it</p>
+
+<button (click)="addTeacher();">add</button>
+<button *ngIf="selectedItemIndex != null" (click)="manageTeacher(teachers[selectedItemIndex]);">edit</button>
+<button *ngIf="selectedItemIndex != null" (click)="deleteTeacherByIndex(selectedItemIndex);">delete</button>
+<br>
+<br><br>
